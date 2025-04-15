@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # This script is strictly for testing purposes.
-# The purpose is a test sever that disables caching i.e.
+# The purpose is to have a test sever that disables caching i.e.
 # forces the webserver to always redownload the file each time it needs it.
 try:
     from http import server # Python 3
