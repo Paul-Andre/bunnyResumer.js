@@ -3,7 +3,6 @@ Array.from(document.querySelectorAll("iframe"))
 .forEach((iframe) => {
     let url = iframe.src;
     if (!url.includes("rememberPosition=")) {
-        url = url + (url.includes("?")?"&":"?") + "rememberPosition=true";
-        iframe.src = url.replace(/autoplay=true/, "autoplay=false");
+        iframe.src = url.replace(/autoplay=true/, "autoplay=false") + (url.includes("?")?"&":"?") + "rememberPosition=true";
     }
   });

@@ -26,11 +26,10 @@ Array.from(document.querySelectorAll("iframe"))
 .forEach((iframe) => {
     let url = iframe.src;
     if (!url.includes("rememberPosition=")) {
-        url = url + (url.includes("?")?"&":"?") + "rememberPosition=true";
-        iframe.src = url.replace(/autoplay=true/, "autoplay=false");
+        iframe.src = url.replace(/autoplay=true/, "autoplay=false") + (url.includes("?")?"&":"?") + "rememberPosition=true";
     }
   });
 </script>
 ```
 
-You can override this behavior by explicitly adding `rememberPosition=false` to the url when you embed videos.
+You can override this behavior on specific videos by explicitly adding `rememberPosition=false` or `rememberPosition=true` to the url of each embedded video.
