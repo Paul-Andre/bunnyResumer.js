@@ -1,6 +1,6 @@
 # Make bunny.net (mediadelivery.net) videos remember position
 
-To make videos hosted by bunny.net (mediadelivery.net) automatically resume where they left off when they start playing, add `rememberPosition=true` to the src url of the embedded iframe.
+To make videos hosted by bunny.net (mediadelivery.net) automatically resume where they left off when they start playing, add `&rememberPosition=true` to the src URL of the embedded iframe.
 
 Or, alternatively, to do it automatically without manually having to change the url of all your embedded videos, simply add this script to the footer of your website.
 
@@ -32,4 +32,4 @@ Array.from(document.querySelectorAll("iframe"))
 </script>
 ```
 
-You can override this behavior on specific embedded videos by explicitly adding `rememberPosition=false` or `rememberPosition=true` to their src URL.
+You can override this behavior on specific embedded videos by explicitly adding `&rememberPosition=false` or `&rememberPosition=true` to their src URL.
