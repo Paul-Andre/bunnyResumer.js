@@ -1,10 +1,5 @@
-// Use this script by adding the following to the end of your HTML file:
-// <script src="https://cdn.jsdelivr.net/gh/adamgibbons/adamgibbons.github.io@master/adamgibbons.github.io/plugin.js"></script>
-
-// This script will automatically play videos from the beginning when the page loads.
-
+// This scripts requires player.js to be loaded
 "use strict";
-
 
 function initResume(iframe) {
   const DONT_AUTOPLAY_FROM_MIDDLE = true;
@@ -36,8 +31,9 @@ function initResume(iframe) {
 
       // The purpose of the following block of code is to do what you would expected
       // player.setCurrentTime(targetTime) to do.
-      // The problem is setCurrentTime() does not work unless the video has started playing.
-      // Moreover, there is no way to reliably make the video play from JavaScript
+      // There seems to be a bug with setCurrentTime() (at least with mediadelivery.net, as of April 14th 2025)
+      // making it not work unless the video has started playing.
+      // Moreover, there is no way to reliably start playing the video from JavaScript
       // because the browser will block autoplay.
       //
       // However, by calling player.play() and then calling setCurrentTime over and over really fast,
@@ -58,6 +54,8 @@ function initResume(iframe) {
         });
         player.setCurrentTime(targetTime);
       }, 50);
+
+
     } else {
       // In the case where no  
       if (hasAutoplay) {
