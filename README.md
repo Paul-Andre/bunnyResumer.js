@@ -1,15 +1,18 @@
-mediadelivery.net/bunny.net video resumer
+# Make bunny.net (mediadelivery.net) videos remember position
 
-To make videos hosted by bunny.net (mediadelivery.net) automatically resume where they left off when they start playing, simply add the following to the footer of your page:
+To make videos hosted by bunny.net (mediadelivery.net) automatically resume where they left off when they start playing, add `rememberPosition=true` to the src url of the embedded iframe.
+
+Or, alternatively, to do it automatically without manually having to change the url to all your embedded videos, simply add this script to the footer of your website.
 
 ```html
-<script src="//assets.mediadelivery.net/playerjs/player-0.1.0.min.js"></script>
-<script>//https://github.com/Paul-Andre/BunnyResumer
-function initResume(c){let a=new playerjs.Player(c),b=c.src,e=b.includes("autoplay=true");e&&(c.src=b.replace(/autoplay=true/,"autoplay=false"));a.on("ready",function(){b=b.split("?")[0];b=b.split("#")[0];b.includes("://")&&(b=b.split("://")[1]);let f="saved_video_time "+b,g=localStorage.getItem(f);if(g){let d=Math.max(0,parseFloat(g)-1);a.play();let k=setInterval(()=>{a.setCurrentTime(d);a.getCurrentTime(h=>{h>=d?(clearInterval(k),a.pause()):a.setCurrentTime(d)});a.setCurrentTime(d)},50)}else e&&
-a.play();a.on("timeupdate",function(d){localStorage.setItem(f,d.seconds)})})}(function(){let c=Array.from(document.querySelectorAll("iframe")).filter(a=>a.src.includes("iframe.mediadelivery.net/embed"));for(let a=0;a<c.length;a++)initResume(c[a])})();
+<script>
+Array.from(document.querySelectorAll("iframe"))
+.filter((iframe) => iframe.src.includes("iframe.mediadelivery.net/embed"))
+.forEach((iframe) => {
+    let url = iframe.src;
+    if (!url.includes("rememberPosition=")) {
+        iframe.src = url + (url.includes("?")?"&":"?") + "rememberPosition=true";
+    }
+  });
 </script>
 ```
-
-This script will automatically apply to all the mediadelivery.net videos embedded in the page. If you dynamically add a video to the page using javascript and want it to apply to it as well, call `initResume(yourVideoIframeHere)` on it.
-
-You can look at the unminimized code in `bunnyResumer.js`.
