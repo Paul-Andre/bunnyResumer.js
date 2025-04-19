@@ -22,7 +22,7 @@ If you want videos to remember their positions, and you would also like to autom
 ```html
 <script>
 Array.from(document.querySelectorAll("iframe"))
-.filter((b) => b.src.includes("iframe.mediadelivery.net/embed"))
+.filter((iframe) => iframe.src.includes("iframe.mediadelivery.net/embed"))
 .forEach((iframe) => {
     let url = iframe.src;
     if (!url.includes("rememberPosition=")) {
