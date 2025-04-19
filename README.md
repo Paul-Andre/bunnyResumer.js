@@ -17,7 +17,7 @@ Array.from(document.querySelectorAll("iframe"))
 </script>
 ```
 
-If you want videos to remember their position and also automatically disable autoplay on all videos (because videos auto-playing from the middle can be confusing), use this version instead:
+If you want videos to remember their positions, and you would also like to automatically disable autoplay on all videos (because videos auto-playing from the middle can be confusing), use this version instead:
 
 ```html
 <script>
